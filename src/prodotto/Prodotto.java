@@ -65,8 +65,8 @@ public class Prodotto {
     }
     
     public void Stampa(){
-        DecimalFormat dfEuro= new DecimalFormat("0.00");
-        DecimalFormat dfquantita= new DecimalFormat("0.##");
+        DecimalFormat dfEuro= new DecimalFormat("0.00"); //Formato da usare per gli EUR
+        DecimalFormat dfquantita= new DecimalFormat("0.##"); //Formato da usare per la quantita
         System.out.println("Nome prodotto: " + nome);
         System.out.println("Prezzo unitario del prodotto: "+dfEuro.format(prezzou)+"€");
         System.out.println("Quantità acquistate: "+dfquantita.format(quantita));
