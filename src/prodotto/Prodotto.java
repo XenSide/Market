@@ -10,15 +10,11 @@ import java.text.DecimalFormat;
 public class Prodotto {
     //VAR IO
     private final String nome;
-    private final float prezzou;
-    private final float quantita;
+    private final float prezzou,quantita;
     private float soglia;
     private int sconto;
     //VAR ELAB
-    private float prezzoFinale;
-    private float prezzoScontato;
-    private boolean scontoApplicato;
-    private float scontoNetto;
+    private float prezzoFinale,prezzoScontato,scontoEur;
     
     //Costruttore
     public Prodotto(String nome, float prezzou, float quantita) {
@@ -56,12 +52,13 @@ public class Prodotto {
 //FINE GET SET
     
 //METODI   
-    public void applicaSconto(){
+    public float applicaSconto(){
         if (prezzoFinale>soglia&&sconto>0){
-            scontoNetto = prezzoFinale*sconto/100;
-            prezzoScontato = prezzoFinale-scontoNetto;
-            scontoApplicato=true;
+            scontoEur = prezzoFinale*sconto/100;
+            prezzoScontato = prezzoFinale-scontoEur;
+            return prezzoScontato;
     }
+        return 0;
     }
     
     public void stampa(){
@@ -71,23 +68,24 @@ public class Prodotto {
         System.out.println("Prezzo unitario del prodotto: "+dfEuro.format(prezzou)+"€");
         System.out.println("Quantità acquistate: "+dfquantita.format(quantita));
         
-        if (scontoApplicato){
+        if (scontoEur>0){
             System.out.println("Prezzo di listino: "+dfEuro.format(prezzoFinale)+"€");
-            System.out.println("Sconto applicato: "+sconto+"% ("+dfEuro.format(scontoNetto)+"€)");
+            System.out.println("Sconto applicato: "+sconto+"% ("+dfEuro.format(scontoEur)+"€)");
             System.out.println("Totale: "+dfEuro.format(prezzoScontato)+"€");
             
-        }else if(sconto>0 && scontoApplicato){
+        }else if(sconto>0){
             float differenzaSoglia;
             differenzaSoglia = soglia-prezzoFinale;
-            System.out.println("Spendi altri "+dfEuro.format(differenzaSoglia)+"€ ("+dfEuro.format(soglia)+"€ in totale) per avere uno sconto del "+sconto+"%");
             System.out.println("Totale: "+ dfEuro.format(prezzoFinale)+"€");
+            System.out.println("Spendi altri "+dfEuro.format(differenzaSoglia)+"€ ("+dfEuro.format(soglia)+"€ in totale) per avere uno sconto del "+sconto+"%");
         }else{
             System.out.println("Totale: "+ dfEuro.format(prezzoFinale)+"€");
         }
     }
     
-    public void calcolaTot(){
+    public float calcolaTot(){
         prezzoFinale=prezzou*quantita;
+        return prezzoFinale; 
     }
 }
 //FINE METODI
