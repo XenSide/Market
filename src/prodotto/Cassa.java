@@ -89,9 +89,9 @@ public class Cassa {
             System.out.println("Errore nell'inserimento della soglia");
         }
         
-        prodottoTest.CalcolaTot();
-        prodottoTest.ApplicaSconto();
-        prodottoTest.Stampa();
+        prodottoTest.calcolaTot();
+        prodottoTest.applicaSconto();
+        prodottoTest.stampa();
         
         //}
             

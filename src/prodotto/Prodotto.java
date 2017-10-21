@@ -56,7 +56,7 @@ public class Prodotto {
 //FINE GET SET
     
 //METODI   
-    public void ApplicaSconto(){
+    public void applicaSconto(){
         if (prezzoFinale>soglia&&sconto>0){
             scontoNetto = prezzoFinale*sconto/100;
             prezzoScontato = prezzoFinale-scontoNetto;
@@ -64,7 +64,7 @@ public class Prodotto {
     }
     }
     
-    public void Stampa(){
+    public void stampa(){
         DecimalFormat dfEuro= new DecimalFormat("0.00"); //Formato da usare per gli EUR
         DecimalFormat dfquantita= new DecimalFormat("0.##"); //Formato da usare per la quantita
         System.out.println("Nome prodotto: " + nome);
@@ -86,7 +86,7 @@ public class Prodotto {
         }
     }
     
-    public void CalcolaTot(){
+    public void calcolaTot(){
         prezzoFinale=prezzou*quantita;
     }
 }
